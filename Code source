@@ -1,0 +1,24 @@
+#define Alcohol_sensor 2
+#define LED 3
+#define buzzer 4
+
+ 
+void setup() {
+  pinMode(Alcohol_sensor, INPUT);
+  pinMode(LED, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
+}
+void loop() {
+  bool digital = digitalRead(Alcohol_sensor);
+ 
+  if (digital == 0) {
+    Serial.println("Alcohol detected...");
+    digitalWrite(LED, HIGH);
+    digitalWrite(buzzer, HIGH);
+  } else {
+    Serial.println("Alcohol is not detected");
+    digitalWrite(LED, LOW);
+    digitalWrite(buzzer, LOW);
+  }
+}
